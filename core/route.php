@@ -1,6 +1,6 @@
 <?php
     // core class for routes application
-    class route
+    class Route
     {
         // declare param for route by controller and method
         private $controller;
