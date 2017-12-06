@@ -92,7 +92,7 @@
                 array_push($bind,':'.$array[$i][1]);
             }
 
-            $sql = "INSERT INTO ".$this->table."(".$key.")"."(".$value.")";
+            $sql = "INSERT INTO ".$this->table."(".$key.")"."VALUES"."(".$value.")";
             $this->prepare($sql);
 
             for($i = 0; $i < $count; $i++)
