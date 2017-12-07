@@ -7,7 +7,7 @@
         private $request;
         private $action;
 
-        public function __construct($request,$action)
+        public function __construct($request)
         {
             //get array['controller'=>'value','action'=>value] from index.php
             //set by .htaccess
@@ -21,7 +21,6 @@
             {
                 $this->controller = $this->request['controller'];
             }
-            $this->action = $action;
             //check action if !isset redirect to index
             if($request['action'] == '')
             {
@@ -36,9 +35,9 @@
         public function createController()
         {
             //check class
-            if(class_exist($this->controller))
+            if(class_exists($this->controller))
             {
-                $parents = class_parent($this->controller);
+                $parents = class_parents($this->controller);
                 //check extend
                 if(in_array("Controller", $parents))
                 {
@@ -49,12 +48,12 @@
                     }
                     else
                     {
-                        echo '<h1 Method Not Found>'
+                        echo '<h1 Method Not Found>';
                     }
                 }
                 else
                 {
-                    echo '<h1>BaseController Not Found</h1>'
+                    echo '<h1>BaseController Not Found</h1>';
                 }
             }
             else
