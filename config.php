@@ -8,5 +8,5 @@
 
     //Define URL
         define("ROOT_PATH", "/code/LibraryApp/");
-        define("ROOT_URL", "https://localhost/code/LibraryApp");
+        define("ROOT_URL", "http://localhost/code/LibraryApp/");
 ?>
