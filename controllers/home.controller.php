@@ -2,7 +2,7 @@
 
     class Home extends controller
     {
-        public function index()
+        protected function index()
         {
             $viewmodel = new HomeModel();
             $this->renderView($viewmodel->index(),true);

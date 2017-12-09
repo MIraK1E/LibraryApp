@@ -7,8 +7,11 @@
     require('core/route.php');
 
     require('controllers/home.controller.php');
+    require('controllers/books.controller.php');
 
+    require('models/books.model.php');
     require('models/home.model.php');
+
 
     $route = new Route($_GET);
     $controller = $route->createController();

@@ -4,20 +4,4 @@
     <form class="mt-3" id="user_search">
         <input type="text" style="text-align:center;" class="form-control" placeholder="Book's name here!">
     </form>
-    <table class="table table-bordered mt-5">
-        <thead class="thead-light">
-            <tr>
-                <th>#</th>
-                <th>cover</th>
-                <th>name</th>
-                <th>avialable</th>
-            </tr>
-        </thead>
-        <tr>
-            <td>1</td>
-            <td>fuck'in image here</td>
-            <td>fuck until dead</td>
-            <td>in asshole</td>
-        </tr>
-    </table>
 </div>

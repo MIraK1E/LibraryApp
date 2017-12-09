@@ -16,7 +16,12 @@
             return $this->{$this->action}();
         }
 
-        protected function renderView($viewmodel, $template)
+        protected function getClass()
+        {
+            return get_class($this);
+        }
+
+        protected function renderView($viewmodel, $template, $js)
         {
             $view = 'views/'.get_class($this).'/'.$this->action.'.php';
             if($template)

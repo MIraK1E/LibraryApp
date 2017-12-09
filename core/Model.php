@@ -4,7 +4,6 @@
     {
         protected $dbh;
         protected $stmt;
-        protected $table;
         //set connection
         public function __construct()
         {
@@ -21,6 +20,7 @@
         public function prepare($query)
         {
             $this->stmt = $this->dbh->prepare($query);
+            return true;
         }
         // bind parameter
         public function bind($param, $value, $type = null)
@@ -57,13 +57,13 @@
         public function fetch()
         {
             $this->execute();
-            return $this->dbh->fetch(PDO::FETCH_ASSOC);
+            return $this->stmt->fetch(PDO::FETCH_ASSOC);
         }
 
         public function fetchall()
         {
             $this->execute();
-            return $this->dbh->fetchAll(PDO::FETCH_ASSOC);
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         public function lastInsertId()
@@ -71,47 +71,52 @@
             return $this->dbh->lastInsertId();
         }
 
-        public function Insert($table, $array, $print = false)
+        public function Insert($table, $array)
         {
-            $this->table = $table;
-            $count = count($array);
-            $key; $value; $bind = array();
+            $key=''; $value=''; $bind = array();
 
-            for($i = 0; $i < $count; $i++)
+            for($i = 0; $i < count($array); $i++)
             {
-                if($i = 0)
+                if($i == 0)
                 {
                     $key = $array[$i][0];
-                    $value = ':'.$array[$i][1];
+                    $value = ':'.$array[$i][0];
                 }
                 else
                 {
                     $key .= ','.$array[$i][0];
-                    $value .= ',:'.$array[$i][1];
+                    $value .= ',:'.$array[$i][0];
                 }
-                array_push($bind,':'.$array[$i][1]);
+                $bind[':'.$array[$i][0]] = $array[$i][1];
             }
 
-            $sql = "INSERT INTO ".$this->table."(".$key.")"."VALUES"."(".$value.")";
-            $this->prepare($sql);
 
-            for($i = 0; $i < $count; $i++)
-            {
-                $this->bind($bind[$i],$array[$i][1]);
-            }
+            $sql = 'INSERT INTO '.$table.'('.$key.')'.'VALUES'.'('.$value.')';
 
-            if($this->execute())
+            if($this->prepare($sql))
             {
-                return true;
+                foreach($bind as $datakey => $datavalue)
+                {
+                    echo $datakey.'=>'.$datavalue.'<br/>';
+                    $this->bind($datakey,$datavalue);
+                }
+
+                if($this->execute())
+                {
+                    return;
+                }
+                else
+                {
+                    /*print_r($this->stmt);
+                    print_r($this->dbh);
+                    print_r($bind);
+                    echo $sql;*/
+                }
             }
             else
             {
-                return false;
-            }
-
-            if($print == true)
-            {
-                echo $sql;
+                /*echo $sql;
+                echo "didn't work";*/
             }
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-    class HomeModel extends Model
+    class HomeModel extends BooksModel
     {
         public function index()
         {
