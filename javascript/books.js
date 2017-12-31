@@ -1,43 +1,37 @@
 function book_status_filter()
 {
-    $("#book_status_filter").change(function(){
+    $(document).on('change','#book_status_filter',function(){
+        var status = $("#book_status_filter").val();
         $.post(
             'books/index',
-            {status:$("#book_status_filter").val()},
+            {status:status},
             function(response){
-                var data = $.parseJSON(response);
-                render_table(data);
+                $("#partail_view").html(response);
+                $('#book_status_filter').prop('selectedIndex',status-1);
             }
         );
     });
 }
-function render_table(data)
+
+function change_book_status()
 {
-    var table;
-    var status;
-    $.each(data,function(i,item)
-    {
-        if(data[i].Status == 2)
-        {
-            status = 'checked';
-        }
-        else
-        {
-            status = '';
-        }
-        table += '<tr>'+
-                    '<td>'+data[i].idBook+'</td>'+
-                    '<td>'+data[i].Book_name+'</td>'+
-                    '<td>'+data[i].Category_name+'</td>'+
-                    '<td>'+data[i].Balance+'</td>'+
-                    '<td>'+data[i].Location+'</td>'+
-                    '<td><label class="switch"><input type="checkbox"'+status+'><span class="slider round"></span></label></td>'+
-                    '<td><a class="btn btn-outline-secondary" href="<?= ROOT_URL ?>book/view?id=<?= $book['+data[i].idBook+'] ?>"'+'><i class="fa fa-search"></i></a> '+
-                    '<a class="btn btn-outline-warning" href="<?= ROOT_URL ?>book/edit?id=<?= $book['+data[i].idBook+'] ?>"'+'><i class="fa fa-edit"></i></a></td>'+
-                '<tr>'
+    $(document).on('click','#Status',function(){
+        var status_filter = $("#book_status_filter").val();
+        var idBook = $(this).attr('data-book');
+        var status = $(this).attr('data-status');
+        setTimeout(function(){
+            $.post(
+                'books/index',
+                {idBook:idBook,status:status,status_filter:status_filter},
+                function(response){
+                    $("#partail_view").html(response);
+                    $('#book_status_filter').prop('selectedIndex',status_filter-1);
+            });
+        },400);
     });
-    $("#book_table").html(table);
 }
+
 $(document).ready(function(){
     book_status_filter();
+    change_book_status();
 });

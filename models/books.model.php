@@ -11,6 +11,7 @@
             $result = $this->fetchall();
             return $result;
         }
+
         public function add()
         {
             $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -24,10 +25,11 @@
                     array("Book_describe",$post['Describe']),
                     array("Book_pages",$post['Pages']),
                     array("Balance",$post['Balance']),
+                    array("Location",$post['Location']),
                     array("Book_cover",'no photo'),
                 );
 
-                $this->Insert("book",$data_array);
+                $this->insert("book",$data_array);
                 if($this->lastInsertId())
                 {
                     header('location: '.ROOT_URL.'books');
@@ -36,13 +38,29 @@
                 }
             }
         }
-        public function update()
-        {
 
+        public function updateindex($idbook,$status,$filter)
+        {
+            if($status == 2)
+            {
+                $status = 1;
+            }
+            else
+            {
+                $status = 2;
+            }
+
+            $this->prepare('UPDATE book SET Status = :Status WHERE idBook = :idBook');
+            $this->bind(':Status',$status);
+            $this->bind(':idBook',$idbook);
+
+            $this->execute();
+            return $this->fliter($filter);
         }
+
         public function fliter($status)
         {
-            if($status == 0)
+            if($status == 3)
             {
                 $this->prepare('SELECT idBook, Book_name, Category_name, Balance, Location, Status
                                 FROM book

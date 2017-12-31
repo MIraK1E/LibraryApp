@@ -21,7 +21,7 @@
             return get_class($this);
         }
 
-        protected function renderView($viewmodel, $template, $js)
+        protected function renderView($viewmodel, $template, $js = false)
         {
             $view = 'views/'.get_class($this).'/'.$this->action.'.php';
             if($template)

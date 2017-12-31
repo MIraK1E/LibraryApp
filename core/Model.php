@@ -60,7 +60,7 @@
             return $this->stmt->fetch(PDO::FETCH_ASSOC);
         }
 
-        public function fetchall()
+        public function fetchAll()
         {
             $this->execute();
             return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -71,7 +71,7 @@
             return $this->dbh->lastInsertId();
         }
 
-        public function Insert($table, $array)
+        public function insert($table, $array)
         {
             $key=''; $value=''; $bind = array();
 
@@ -90,14 +90,12 @@
                 $bind[':'.$array[$i][0]] = $array[$i][1];
             }
 
-
             $sql = 'INSERT INTO '.$table.'('.$key.')'.'VALUES'.'('.$value.')';
 
             if($this->prepare($sql))
             {
                 foreach($bind as $datakey => $datavalue)
                 {
-                    echo $datakey.'=>'.$datavalue.'<br/>';
                     $this->bind($datakey,$datavalue);
                 }
 
@@ -107,16 +105,81 @@
                 }
                 else
                 {
-                    /*print_r($this->stmt);
-                    print_r($this->dbh);
-                    print_r($bind);
-                    echo $sql;*/
+                    echo "$sql didn't work";
                 }
             }
             else
             {
-                /*echo $sql;
-                echo "didn't work";*/
+                echo "$sql didn't work";
+            }
+        }
+
+        public function getbyId($table, $id, $table_id)
+        {
+            $this->prepare('SELECT * FROM '.$table.' WHERE '.$table_id.'= :id');
+            $this->bind(':id', $id);
+            $result = $this->fetch();
+            return $result;
+        }
+
+        public function update($table, $array, $where, $id)
+        {
+            $update=''; $bind = array();
+
+            for($i = 0; $i < count($array); $i++)
+            {
+                if($i == 0)
+                {
+                    $update = $array[$i][0].'='.':'.$array[$i][0];
+                }
+                else
+                {
+                    $update .= ',:'.$array[$i][0].'='.':'.$array[$i][0];
+                }
+                $bind[':'.$array[$i][0]] = $array[$i][1];
+            }
+
+            $sql = 'UPDATE '.$table.' SET '.$update.' WHERE '.$where.'= :id';
+
+            if($this->prepare($sql))
+            {
+                $this->bind(':id', $id);
+
+                foreach($bind as $datakey => $datavalue)
+                {
+                    $this->bind($datakey,$datavalue);
+                }
+
+                if($this->execute())
+                {
+                    return;
+                }
+                else
+                {
+                    echo "$sql didn't work";
+                }
+            }
+            else
+            {
+                echo "$sql didn't work";
+            }
+        }
+
+        public function destroy($id, $table, $where)
+        {
+            $sql = 'DELETE FROM '.$table.' WHERE '.$where.' = :id';
+
+            if($this->prepare($sql))
+            {
+                $this->bind(':id', $id);
+                $this->execute();
+                $response = 'success';
+                return $response;
+            }
+            else
+            {
+                $response = 'error';
+                return $response;
             }
         }
 
