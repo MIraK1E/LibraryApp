@@ -4,27 +4,27 @@
     {
         protected function index()
         {
-            if(isset($_POST['Get_index_data']))
+            if(isset($_POST['getdata']))
             {
                 $model = new CategoryModel;
-                $result = $model->getData();
+                $result = $model->getdata();
             }
-            else if(isset($_POST['Get_individual_data']))
+            else if(isset($_POST['getindividualdata']))
             {
                 $model = new CategoryModel;
-                $result = $model->getcategorydata($_POST['Get_individual_data']);
+                $result = $model->getcategorydata($_POST['getindividualdata']);
             }
             else if(isset($_POST['Category_name']))
             {
-                if(isset($_POST['idCategory']))
+                if(!isset($_POST['idCategory']))
                 {
                     $model = new CategoryModel;
-                    $result = $model->edit($_POST['idCategory'],$_POST['Category_name']);
+                    $result = $model->add($_POST['Category_name']);
                 }
                 else
                 {
                     $model = new CategoryModel;
-                    $result = $model->add($_POST['Category_name']);
+                    $result = $model->edit($_POST['idCategory'],$_POST['Category_name']);
                 }
             }
             else if(isset($_POST['idCategory']))
@@ -35,8 +35,7 @@
             else
             {
                 $viewmodel = new CategoryModel;
-                $this->renderView($viewmodel->index(),true,$this->getClass());
-                //$viewmodel->index();
+                $this->renderView(false,true,$this->getClass());
             }
         }
     }
