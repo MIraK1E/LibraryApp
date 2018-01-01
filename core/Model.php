@@ -134,7 +134,7 @@
                 }
                 else
                 {
-                    $update .= ',:'.$array[$i][0].'='.':'.$array[$i][0];
+                    $update .= ','.$array[$i][0].'='.':'.$array[$i][0];
                 }
                 $bind[':'.$array[$i][0]] = $array[$i][1];
             }
