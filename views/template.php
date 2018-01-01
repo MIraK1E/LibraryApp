@@ -28,11 +28,30 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarlist">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item mr-2">
-                            <a href="<?= ROOT_URL ?>books" class="nav-link"><i class="fa fa-book fa-fw"></i> Book</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= ROOT_URL ?>borrow"><i class="fa fa-exchange fa-fw"></i> Borrow</a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= ROOT_URL ?>category" class="nav-link"><i class="fa fa-cubes fa-fw"></i> Category</a>
+                            <a class="nav-link" href="<?= ROOT_URL ?>borrowhistory"><i class="fa fa-list fa-fw"></i> Borrow History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= ROOT_URL ?>members"><i class="fa fa-users fa-fw"></i> Members</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                                <i class="fa fa-user fa-fw"></i> Librarians
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="<?= ROOT_URL ?>librarian"><i class="fa fa-user fa-fw"></i> See Active</a>
+                                <a class="dropdown-item" href="<?= ROOT_URL ?>librarian/add"><i class="fa fa-user-plus fa-fw"></i> New Librarian</a>
+                                <a class="dropdown-item" href="<?= ROOT_URL ?>librarian/inactive"><i class="fa fa-user-times"></i> See InActive</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= ROOT_URL ?>books" class="nav-link"><i class="fa fa-book fa-fw"></i> Books</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= ROOT_URL ?>category" class="nav-link"><i class="fa fa-cubes fa-fw"></i> Categories</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link"><i class="fa fa-sign-in fa-fw"></i> Login</a>
