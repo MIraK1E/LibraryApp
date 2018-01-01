@@ -9,10 +9,12 @@
     require('controllers/home.controller.php');
     require('controllers/books.controller.php');
     require('controllers/category.controller.php');
+    require('controllers/librarian.controller.php');
 
     require('models/books.model.php');
     require('models/home.model.php');
     require('models/category.model.php');
+    require('models/librarian.model.php');
 
     $route = new Route($_GET);
     $controller = $route->createController();
