@@ -6,6 +6,7 @@
         private $controller;
         private $request;
         private $action;
+        private $id;
 
         public function __construct($request)
         {
@@ -29,6 +30,14 @@
             else
             {
                 $this->action = $this->request['action'];
+            }
+            if($request['id'] == '')
+            {
+                $this->id = '';
+            }
+            else
+            {
+                $this->id = $this->request['id'];
             }
         }
 
