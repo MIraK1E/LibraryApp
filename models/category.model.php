@@ -2,24 +2,7 @@
 
     class CategoryModel extends Model
     {
-        public function index()
-        {
-            $this->prepare('SELECT * FROM category');
-            $result = $this->fetchAll();
-            return $result;
-        }
-
-        public function add()
-        {
-            $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $data_array = array(array('Category_name',$post['Category_name']));
-            $this->insert("category",$data_array);
-
-            $result = $this->getData();
-            return $result;
-        }
-
-        public function getData()
+        public function getdata()
         {
             $this->prepare('SELECT * FROM category');
             $result = $this->fetchAll();
@@ -34,6 +17,16 @@
                 );
             }
             echo json_encode($dataresult);
+        }
+
+        public function add()
+        {
+            $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data_array = array(array('Category_name',$post['Category_name']));
+            $this->insert("category",$data_array);
+
+            $result = $this->getData();
+            return $result;
         }
 
         public function getcategorydata($id)

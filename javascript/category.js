@@ -38,7 +38,7 @@ function edit_catagory()
         $("#category_modal").modal("show");
         $.post('category/index',
         {
-            Get_individual_data : $(this).val()
+            getindividualdata : $(this).val()
         },
         function(response){
             var data = $.parseJSON(response);
@@ -71,7 +71,7 @@ function category_table()
     {
         bLengthChange: false,
         searching: false,
-        ajax : {url:'category/index',type: "POST",data:({Get_index_data:true})},
+        ajax : {url:'category/index',type: "POST",data:({getdata:true})},
     });
 }
 
