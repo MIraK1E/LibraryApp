@@ -5,8 +5,6 @@
                 <input type="file">
             </div>
             <div class="col-8">
-                <!--<div class="form-group">
-                </div>-->
                 <div class="form-group">
                     <label for="book_name">Name - Surname</label>
                     <input type="text" name="Lib_name" class="form-control">
