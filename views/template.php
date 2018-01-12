@@ -7,11 +7,15 @@
         <link rel="stylesheet" href="<?= ROOT_PATH ?>assets/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="<?= ROOT_PATH ?>/assets/css/style.css">
         <link rel="stylesheet" href="<?= ROOT_PATH ?>/assets/datatables/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="<?= ROOT_PATH ?>/assets/datatables/responsive.bootstrap4.min.css">
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/popper.js/popper.min.js"></script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/datatables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/datatables/dataTables.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="<?= ROOT_PATH ?>assets/datatables/dataTables.responsive.min.js"></script>
+        <script type="text/javascript" src="<?= ROOT_PATH ?>assets/datatables/responsive.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="<?= ROOT_PATH ?>assets/mask-input/jquery.mask.min.js"></script>
         <?php
             if($js)
             {
@@ -32,10 +36,10 @@
                             <a class="nav-link" href="<?= ROOT_URL ?>borrow"><i class="fa fa-exchange fa-fw"></i> Borrow</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= ROOT_URL ?>borrowhistory"><i class="fa fa-list fa-fw"></i> Borrow History</a>
+                            <a class="nav-link" href="<?= ROOT_URL ?>borrowhistory"><i class="fa fa-list fa-fw"></i>History</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= ROOT_URL ?>members"><i class="fa fa-users fa-fw"></i> Members</a>
+                            <a class="nav-link" href="<?= ROOT_URL ?>member"><i class="fa fa-users fa-fw"></i> Members</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
