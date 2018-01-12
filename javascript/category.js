@@ -1,34 +1,19 @@
 function send_category_data()
 {
-    $("#category_form").submit(function(e)
+    $(document).on("submit","#category_form",function(e)
     {
         e.preventDefault();
-        var type = $("input[name=idCategory]").val();
-        if(type == 0)
+        $.post('category/index',
         {
-            $.post('category/index',
-            {
-                Category_name : $("input[name=Category_name]").val()
-            },
-            function(response){
-                $("#category_modal").modal('hide');
-                $("#category_form")[0].reset();
-                $("#category_table").DataTable().ajax.reload();
-            });
-        }
-        else
-        {
-            $.post('category/index',
-            {
-                idCategory : $("input[name=idCategory]").val(),
-                Category_name : $("input[name=Category_name]").val()
-            },
-            function(response){
-                $("#category_modal").modal('hide');
-                $("#category_form")[0].reset();
-                $("#category_table").DataTable().ajax.reload();
-            });
-        }
+            Category_name : $("input[name=Category_name]").val(),
+            idCategory : $("input[name=idCategory]").val()
+        },
+        function(){
+            $('#category_form')[0].reset();
+            $("input[type=hidden]").val('0');
+            $("#category_modal").modal('hide');
+            $("#category_table").DataTable().ajax.reload();
+        });
     });
 }
 
@@ -69,24 +54,23 @@ function category_table()
 {
     $("#category_table").DataTable(
     {
-        bLengthChange: false,
-        searching: false,
         ajax : {url:'category/index',type: "POST",data:({getdata:true})},
     });
 }
 
-function page_length()
+
+function reset_modal_form()
 {
-    var table = $("#category_table").DataTable();
-    $(document).on("change","#page_length",function(){
-        table.page.len($(this).val()).draw();
+    $('.modal').on('hidden.bs.modal', function(){
+        $("input[type=hidden]").val('0');
+        $(this).find('form')[0].reset();
     });
 }
 
 $(document).ready(function(){
     send_category_data();
     category_table();
-    page_length();
     edit_catagory();
     delete_category();
+    reset_modal_form();
 });
