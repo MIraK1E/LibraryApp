@@ -16,15 +16,15 @@
             }
             else if(isset($_POST['Category_name']))
             {
-                if(!isset($_POST['idCategory']))
+                if($_POST['idCategory'] == '0')
                 {
                     $model = new CategoryModel;
-                    $result = $model->add($_POST['Category_name']);
+                    $result = $model->add();
                 }
                 else
                 {
                     $model = new CategoryModel;
-                    $result = $model->edit($_POST['idCategory'],$_POST['Category_name']);
+                    $result = $model->edit($_POST['idCategory']);
                 }
             }
             else if(isset($_POST['idCategory']))
