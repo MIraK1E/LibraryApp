@@ -12,8 +12,8 @@
                     $row['idCategory'],
                     $row['Category_name'],
                     $row['Count'],
-                    "<button class='btn btn-outline-warning' id='edit' value=".$row['idCategory']."><i class='fa fa-edit'></i></button>
-                    <button class='btn btn-outline-danger' id='delete' value=".$row['idCategory']."><i class='fa fa-times'></i></button>"
+                    "<button class='btn btn-mute' id='edit' value=".$row['idCategory']."><i class='fa fa-edit'></i></button>
+                    <button class='btn btn-mute' id='delete' value=".$row['idCategory']."><i class='fa fa-times'></i></button>"
                 );
             }
             echo json_encode($dataresult);
@@ -35,7 +35,7 @@
             echo json_encode($data);
         }
 
-        public function edit($id,$name)
+        public function edit($id)
         {
             $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data_array = array(array('Category_name',$post['Category_name']));
