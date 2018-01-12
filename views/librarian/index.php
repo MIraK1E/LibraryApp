@@ -1,5 +1,7 @@
 <div class="row">
-<?php foreach($viewmodel as $data) : ?>
+<?php if(empty($viewmodel)){ ?>
+<div class="mt-5"><h3>No data</h3></div>
+<?php } else { foreach($viewmodel as $data) : ?>
 <div class="card mt-5 mr-5 lib_card" style="width: 16rem;">
     <img class="card-img-top" src="<?= ROOT_URL?>assets/images/img_avatar.png" alt="Card image cap">
         <div class="card-body">
@@ -15,5 +17,5 @@
         <p><i class="fa fa-phone fa-fw"></i> <?= $data['Lib_tel'] ?></p>
     </div>
 </div>
-<?php endforeach; ?>
+<?php endforeach; } ?>
 </div>
