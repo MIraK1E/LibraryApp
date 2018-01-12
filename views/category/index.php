@@ -1,18 +1,9 @@
 <div class="card mt-5">
     <div class="card-body">
         <div class="row">
-            <div class="col-2">
-                <button type="button" data-toggle="modal" data-target="#category_modal" class="btn btn-outline-info"><b><i class="fa fa-cubes fa-fw"></i> Add Category</b></button>
-            </div>
-            <div class="col-10">
-                <div class="float-right form-inline">Show&nbsp;
-                <select id="page_length" class="form-control">
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                </select>
-                &nbsp;entries</div>
+            <div class="col-12 ml-3 mb-3">
+                <h2 class="text-dark"><i class="fa fa-cubes fa-fw"></i> Category</h2>
+                <button type="button" data-toggle="modal" data-target="#category_modal" class="btn btn-outline-info mt-2"><b><i class="fa fa-plus fa-fw"></i> Add Category</b></button>
             </div>
         </div>
         <table class="table table-bordered text-center mt-5" id="category_table">
