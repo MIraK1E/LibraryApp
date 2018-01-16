@@ -5,17 +5,22 @@
         <title>Library</title>
         <link rel="stylesheet" href="<?= ROOT_PATH ?>assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?= ROOT_PATH ?>assets/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="<?= ROOT_PATH ?>/assets/css/style.css">
-        <link rel="stylesheet" href="<?= ROOT_PATH ?>/assets/datatables/dataTables.bootstrap4.min.css">
-        <link rel="stylesheet" href="<?= ROOT_PATH ?>/assets/datatables/responsive.bootstrap4.min.css">
+        <link rel="stylesheet" href="<?= ROOT_PATH ?>assets/css/style.css">
+        <link rel="stylesheet" href="<?= ROOT_PATH ?>assets/datatables/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="<?= ROOT_PATH ?>assets/datatables/responsive.bootstrap4.min.css">
+        <link rel="stylesheet" href="<?= ROOT_PATH ?>assets/select2/css/select2.min.css">
+        <link rel="stylesheet" href="<?= ROOT_PATH ?>assets/pace/pace-theme-minimal.css">
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/popper.js/popper.min.js"></script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/datatables/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="<?= ROOT_PATH ?>assets/datatables/dataTables.bootstrap4.min.js"></script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/datatables/dataTables.responsive.min.js"></script>
+        <script type="text/javascript" src="<?= ROOT_PATH ?>assets/datatables/dataTables.bootstrap4.min.js"></script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/datatables/responsive.bootstrap4.min.js"></script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/mask-input/jquery.mask.min.js"></script>
+        <script type="text/javascript" src="<?= ROOT_PATH ?>/assets/select2/js/select2.full.min.js"></script>
+        <script type="text/javascript">window.paceOptions = {target: '.loader'}</script>
+        <script type="text/javascript" src="<?= ROOT_PATH ?>/assets/pace/pace.min.js"></script>
         <?php
             if($js)
             {
@@ -63,6 +68,7 @@
                     </ul>
                 </div>
           </nav>
+            <div class="loader"></div>
             <div class="container" id="partail_view">
                 <?php require($view); ?>
             </div>
