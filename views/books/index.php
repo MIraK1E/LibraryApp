@@ -1,63 +1,58 @@
-<div class="card  mt-5">
+<div class="card mt-5 mb-5">
     <div class="card-body">
         <div class="row">
-            <div class="col-3">
-                <a href="<?= ROOT_URL ?>books/add" class="btn btn-outline-info"><b><i class="fa fa-book fa-fw"></i> Add Book</b></a>
-            </div>
-            <div class="col-9">
-                <div class="form-inline float-right">
-                    <div class="form-group col-6">
-                        <label class="mr-sm-2" for="book_status">status</label>
-                        <select id="book_status_filter" class="form-control col-9">
-                            <option value="1">Show Active Book</option>
-                            <option value="2">Show Suspended Book</option>
-                            <option value="3">Show All Book</option>
-                        </select>
-                    </div>
-                    <div class="input-group col-6">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text"><label class="mr-sm-2" for="book_search">&nbsp;<i class="fa fa-search"></i></label></div>
-                        </div>
-                        <input type="text" name="book_search" class="form-control col-9">
-                    </div>
-                </div>
+            <div class="col-12 mb-3 ml-3">
+                <h2 class="text-dark"><i class="fa fa-book fa-fw"></i> Book</h2>
+                <a href="<?= ROOT_URL ?>books/add" class="btn btn-outline-info mt-2"><b><i class="fa fa-plus fa-fw"></i> Add Book</b></a>
             </div>
         </div>
-        <ul class="nav mt-2">
-            <li class="mr-3"><a class="text-dark">Active : 16</a></li>
-            <li><a class="text-dark">Suspend : 16</a></li>
-        </ul>
-        <table class="table table-bordered text-center">
+        <table class="table table-bordered dt-responsive text-center" id="book_table" cellspacing="0" width="100%">
             <thead class="thead-light">
                 <tr>
-                    <th>#</th>
-                    <th>Name</th>
+                    <th>Book Name</th>
+                    <th>ISBN</th>
                     <th>Category</th>
                     <th>Avialable</th>
-                    <th>location</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody id="book_table">
-                <?php if(empty($viewmodel)) { ?>
-                <tr><td colspan="7">Book Not Found</td></tr>
-                <?php }else{
-                foreach($viewmodel as $book) : ?>
-                    <tr>
-                        <td><?= $book['idBook'] ?></td>
-                        <td><?= $book['Book_name'] ?></td>
-                        <td><?= $book['Category_name'] ?></td>
-                        <td><?= $book['Balance'] ?></td>
-                        <td><?= $book['Location'] ?></td>
-                        <td><label class="switch"><input type="checkbox" data-status=<?= $book['Status'] ?> data-book=<?= $book['idBook'] ?> id="Status"<?php  if($book['Status']==2){echo 'checked';} ?>><span class="slider round"></span></label></td>
-                        <td>
-                            <button class="btn btn-outline-secondary" href="<?= ROOT_URL ?>books/view?id=<?= $book['idBook'] ?>"><i class="fa fa-search"></i></button>
-                            <button class="btn btn-outline-warning" href="<?= ROOT_URL ?>books/edit?id=<?= $book['idBook'] ?>"><i class="fa fa-edit"></i></button>
-                        </td>
-                    </tr>
-                <?php endforeach; }?>
+            <tbody>
             </tbody>
         </table>
+    </div>
+</div>
+<div class="modal fade" id="book_view">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fa fa-book fa-fw"></i> Book Info</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 col-sm-4">
+                        <img style="width:100%;"src="<?= ROOT_URL?>assets/images/img_avatar.png">
+                        <a class="btn btn-outline-info btn-block mt-2" href="#" target="blank" role="button" width="100%"><i class="fa fa-external-link fa-fw"></i> View History </a>
+                    </div>
+                    <div class="col-12 col-sm-8">
+                        <h3 id="Book_name"></h3>
+                        <h5 id="ISBN">ISBN : 9788700631625</h5>
+                        <h6 id="Published_date">Published date : 20/02/2537</h6>
+                        <h6 id="book_pages"></h6>
+                        <h5 id="Category"></h5>
+                        <h6 class="mt-3">Description</h6>
+                        <p id="Book_description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
