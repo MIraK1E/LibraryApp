@@ -71,3 +71,24 @@ input:checked + .slider:before {
     display: inline-block;
     width:auto;
 }
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    color:#495057;
+    background-color:#fff;
+    border-color:#80bdff !important;
+    outline:0;box-shadow:0 0 0 .2rem rgba(0,123,255,.25);
+}
+
+.select2-selection {
+
+    border: 1px solid #ced4da !important;
+}
+
+.select2-selection__rendered {
+    padding: .08rem .75rem !important;
+}
+
+.btn-gray,.btn-gray:hover{
+    background-color : rgba(221,221,221,1);
+    color : black;
+}
