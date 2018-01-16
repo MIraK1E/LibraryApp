@@ -8,10 +8,13 @@
             $result = $this->fetchAll();
             foreach($result as $row)
             {
+                $this->prepare('SELECT count(category_idCategory) as Book FROM book_category where category_idCategory ='.$row['idCategory']);
+                $count = $this->fetch();
+
                 $dataresult["data"][] = array(
                     $row['idCategory'],
                     $row['Category_name'],
-                    $row['Count'],
+                    $count['Book'],
                     "<button class='btn btn-mute' id='edit' value=".$row['idCategory']."><i class='fa fa-edit'></i></button>
                     <button class='btn btn-mute' id='delete' value=".$row['idCategory']."><i class='fa fa-times'></i></button>"
                 );
