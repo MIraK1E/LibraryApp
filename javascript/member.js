@@ -3,7 +3,8 @@ function member_table()
     $("#member_table").DataTable(
     {
         responsive: true,
-        ajax: {url:'member/index',type: "POST",data:({getdata:true})}
+        ajax: {url:'member/index',type: "POST",data:({getdata:true})},
+        language: { search: ""}
     });
 
     $('<label>Show:' +
@@ -14,6 +15,14 @@ function member_table()
 
     $(".dataTables_filter").addClass("row");
     $(".dataTables_filter label").addClass("col-lg-6 col-12 text-center");
+
+    $('.dataTables_filter>label>input[type="search"]').wrap('<div class="input-group"></div>');
+    $('<div class="input-group-prepend">'+
+        '<span class="input-group-text">'+
+                '<i class="fa fa-search fa-fw ml-2 mr-2"></i>'+
+        '</span>').insertBefore('.dataTables_filter>label>.input-group>input[type="search"]');
+    $('.dataTables_filter input').css({'margin-left':'0px','width':'1%'});
+    $('.dataTables_filter .input-group-text').css('padding','.2rem');
 }
 
 function search()
