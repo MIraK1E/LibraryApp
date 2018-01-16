@@ -36,7 +36,6 @@ function edit_catagory()
 function delete_category()
 {
     $(document).on("click","#delete",function(){
-        //alert($(this).val());
         $.post('category/index',
         {
             idCategory : $(this).val()
@@ -55,7 +54,17 @@ function category_table()
     $("#category_table").DataTable(
     {
         ajax : {url:'category/index',type: "POST",data:({getdata:true})},
+        language: { search: ""},
+        autoWidth: false,
+        responsive: true
     });
+    $('.dataTables_filter>label>input[type="search"]').wrap('<div class="input-group"></div>');
+    $('<div class="input-group-prepend">'+
+        '<span class="input-group-text">'+
+                '<i class="fa fa-search fa-fw ml-2 mr-2"></i>'+
+        '</span>').insertBefore('.dataTables_filter>label>.input-group>input[type="search"]');
+    $('.dataTables_filter input').css({'margin-left':'0px','width':'1%'});
+    $('.dataTables_filter .input-group-text').css('padding','.2rem');
 }
 
 
