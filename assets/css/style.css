@@ -72,7 +72,8 @@ input:checked + .slider:before {
     width:auto;
 }
 
-.select2-container--default.select2-container--focus .select2-selection--multiple {
+.select2-container--default .select2-container--focus .select2-selection--multiple
+ {
     color:#495057;
     background-color:#fff;
     border-color:#80bdff !important;
@@ -88,7 +89,29 @@ input:checked + .slider:before {
     padding: .08rem .75rem !important;
 }
 
+.select2-selection--single {
+    height: 100%!important;
+}
+
+.select2-selection--single .select2-selection__arrow {
+    top: 4px!important;
+}
+
 .btn-gray,.btn-gray:hover{
     background-color : rgba(221,221,221,1);
     color : black;
+}
+
+@font-face {
+    font-family: 'Kanit';
+    src: url('../font/Kanit-Light.ttf');
+}
+body {
+    font-family : "Kanit", sans-serif !important;
+    background-color: #eee !important;
+}
+
+.select2-container--default .select2-results>.select2-results__options {
+    max-height: 100px!important;
+    overflow-y: auto;
 }
