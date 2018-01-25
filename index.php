@@ -12,6 +12,7 @@
     require('controllers/librarian.controller.php');
     require('controllers/member.controller.php');
     require('controllers/borrow.controller.php');
+    require('controllers/returnbook.controller.php');
 
     require('models/books.model.php');
     require('models/home.model.php');
@@ -19,6 +20,7 @@
     require('models/librarian.model.php');
     require('models/member.model.php');
     require('models/borrow.model.php');
+    require('models/returnbook.model.php');
 
     $route = new Route($_GET);
     $controller = $route->createController();

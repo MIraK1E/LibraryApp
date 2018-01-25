@@ -15,6 +15,11 @@
                 $model = new BorrowModel;
                 echo $model->getbookdata();
             }
+            else if(isset($_POST['get_book_code']))
+            {
+                $model = new BorrowModel;
+                echo $model->getbookcode();
+            }
             else if(isset($_POST['submit']))
             {
                 $model = new BorrowModel;

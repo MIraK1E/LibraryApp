@@ -1,4 +1,3 @@
-var row = 1;
 function show_data_member()
 {
     $(document).on('change', '.member', function(){
@@ -19,19 +18,19 @@ function show_data_member()
 
 function add_book()
 {
-    $(document).on('click', '#add_book', function(){
-        row +=1;
+    $(document).on('click','#add_book',function(){
         $.post('borrow/index',
         {
-            get_book_opt : true
+            get_book_opt : true,
         },
         function(response)
         {
             $('#book_list')
             .append('<tr>'+
                         '<td class="text-center">'+
-                            '<select name="book[]" class="book">'+response+'</select>'+
+                            '<select class="book">'+response+'</select>'+
                         '</td>'+
+                        '<td></td>'+
                         '<td>'+
                             '<button class="btn" id="del_book"><i class="fa fa-times fa-fw"></i></button>'+
                         '</td>'+
@@ -44,20 +43,46 @@ function add_book()
 function delete_book()
 {
     $(document).on('click', '#del_book', function(){
-        row -=1;
         $(this).closest('tr').remove();
+    });
+}
+
+function show_book_name()
+{
+    $(document).on('change','.book',function(){
+        $(this).closest('td').next('td').html($('option:selected', this).attr('data-book_name'));
     });
 }
 
 function declare_select2()
 {
-    $(".book").select2();
+    $(".book").each(function(){
+        $(this).select2();
+    });
     $('.select2').css({'width':'100%'});
+}
+
+function get_bookcode()
+{
+    $(document).on('change','.book',function(){
+        var position = $(this).closest('td').next('td');
+        $.post('borrow/index',
+        {
+            get_book_code : true,
+            idBook : $(this).val()
+        },
+        function(response)
+        {
+            position.html(response);
+        });
+    });
 }
 
 $(document).ready(function(){
     show_data_member();
-    add_book();
     delete_book();
     declare_select2();
+    show_book_name();
+    add_book();
+    get_bookcode();
 });

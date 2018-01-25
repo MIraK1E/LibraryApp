@@ -47,36 +47,38 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered text-center">
-                    <thead>
-                        <tr>
-                            <th>Book</th>
-                            <th width="150">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="book_list">
-                        <tr>
-                            <td class="text-center">
-                                <select name="book[]" class="book">
-                                    <option>123</option>
-                                    <script>
-                                    $.post('borrow/index',
-                                    {
-                                        get_book_opt : true
-                                    },
-                                    function(response){
-                                        $('.book').html(response);
-                                    });
-                                    $('.member').select2();
-                                    </script>
-                                </select>
-                            </td>
-                            <td>
-
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-reponsive">
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th>Book Name</th>
+                                <th width="200">Code</th>
+                                <th width="150">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="book_list">
+                            <tr>
+                                <td class="text-center">
+                                    <select class="book">
+                                        <script>
+                                        $.post('borrow/index',
+                                        {
+                                            get_book_opt : true
+                                        },
+                                        function(response){
+                                            $('.book').html(response);
+                                        });
+                                        </script>
+                                    </select>
+                                </td>
+                                <td id="book_code">
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <button type="submit" name="submit" class="btn btn-outline-info btn-block"><i class="fa fa-exchange fa-fw"></i> Confirm Borrow</button>
             </div>
         </div>
