@@ -85,8 +85,13 @@ input:checked + .slider:before {
     border: 1px solid #ced4da !important;
 }
 
-.select2-selection__rendered {
+.select2-selection--multiple > .select2-selection__rendered
+{
     padding: .08rem .75rem !important;
+}
+
+.select2-selection__rendered {
+    padding: .22rem .75rem !important;
 }
 
 .select2-selection--single {
@@ -94,7 +99,7 @@ input:checked + .slider:before {
 }
 
 .select2-selection--single .select2-selection__arrow {
-    top: 4px!important;
+    top: 6px!important;
 }
 
 .btn-gray,.btn-gray:hover{
