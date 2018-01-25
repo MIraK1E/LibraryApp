@@ -54,6 +54,12 @@
             return $this->stmt->execute();
         }
 
+        public function count()
+        {
+            $this->execute();
+            return $this->stmt->rowCount();
+        }
+
         public function fetch()
         {
             $this->execute();
