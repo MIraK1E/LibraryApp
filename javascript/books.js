@@ -89,6 +89,20 @@ function view_book()
     });
 }
 
+function amountaction(id,action,code)
+{
+    $.post('bookamount',
+        {
+            idBook : id,
+            action : action,
+            code : code
+        },
+        function(response)
+        {
+            $('#partail_view').html(response);
+        });
+}
+
 function mask_input()
 {
     $("input[name=ISBN]").mask("00-0000-000-0");

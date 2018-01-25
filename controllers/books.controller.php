@@ -39,6 +39,7 @@
                 $this->renderView($viewmodel->add(),true,$this->getClass());
             }
         }
+
         protected function update()
         {
             if(isset($_POST['submit']))
@@ -58,6 +59,29 @@
                     $viewmodel = new BooksModel();
                     $this->renderview($viewmodel->getdatabyid($_GET['id'],'UPDATE'),true,$this->getClass());
                 }
+            }
+        }
+
+        protected function bookamount()
+        {
+            if(isset($_POST['idBook']))
+            {
+                if($_POST['action'] == 'add')
+                {
+                    $viewmodel = new BooksModel;
+                    $this->renderView($viewmodel->addamount($_POST['idBook']),false,$this->getClass());
+                }
+                else
+                {
+                    $viewmodel = new BooksModel;
+                    $this->renderView($viewmodel->deleteamount($_POST['code'],$_POST['idBook']),false,$this->getClass());
+                }
+
+            }
+            else
+            {
+                $viewmodel = new BooksModel;
+                $this->renderView($viewmodel->amountindex($_GET['id']),true,$this->getClass());
             }
         }
     }

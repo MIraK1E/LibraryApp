@@ -51,12 +51,6 @@
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label for="Balance">Balance</label>
-                            <input type="text" name="Balance"class="form-control"  value='<?= $viewmodel['Balance'] ?>'>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
                             <label for="ISBN">ISBN</label>
                             <input type="text" name="ISBN"class="form-control" value='<?= $viewmodel['ISBN'] ?>'>
                         </div>

@@ -4,7 +4,7 @@
     {
         public function getdata()
         {
-            $this->prepare('SELECT idBook, Book_name, Balance, Location, Status, ISBN FROM book');
+            $this->prepare('SELECT idBook, Book_name, Location, Status, ISBN FROM book');
             $result = $this->fetchall();
             foreach($result as $row)
             {
@@ -26,11 +26,13 @@
                     $btn = ' <button class="btn btn-outline-muted" role="button"><i class="fa fa-check fa-fw"></i></button>';
                     $status = '<label class="switch" id="Status" data-value= '.$row['Status'].' data-id='.$row['idBook'].'>InActive<input type="checkbox" checked><span class="slider round"></span></label>';
                 }
+                $this->prepare('SELECT book_idBook FROM book_amount where book_idBook ='.$row['idBook']);
+                $amount = $this->count();
                 $dataresult["data"][] = array(
                     $row['Book_name'],
                     $row['ISBN'],
                     $badge,
-                    $row['Balance'],
+                    "<a class='btn btn-gray btn-block' href=".ROOT_PATH."books/bookamount/".$row['idBook']." role='button'>".$amount."</a>",
                     $status,
                     "<button class='btn' data-target='#book_view' data-toggle='modal' id='view' value=".$row['idBook']."><i class='fa fa-eye'></i></button>
                     <a class='btn btn-gray' href=".ROOT_PATH."books/update/".$row['idBook']." role='button'><i class='fa fa-edit'></i></a>"
@@ -50,7 +52,6 @@
                     array("Published_date", $post['Published_date']),
                     array("Book_describe", $post['Describe']),
                     array("Book_pages", $post['Pages']),
-                    array("Balance", $post['Balance']),
                     array("Location", $post['Location']),
                     array("Book_cover", 'no photo'),
                     array("ISBN", $post['ISBN']),
@@ -58,6 +59,12 @@
                 $this->insert("book",$data_array);
                 if($idBook = $this->lastInsertId())
                 {
+                    for($i = 1; $i <= $post['Balance']; $i++)
+                    {
+                        $data = array(array('book_idBook',$idBook));
+                        $this->insert("book_amount", $data);
+                    }
+
                     foreach($post['Category'] as $key => $category)
                     {
                         $data = array(
@@ -86,7 +93,6 @@
                 array("Published_date", $post['Published_date']),
                 array("Book_describe", $post['Describe']),
                 array("Book_pages", $post['Pages']),
-                array("Balance", $post['Balance']),
                 array("Location", $post['Location']),
                 array("Book_cover", 'no photo'),
                 array("ISBN", $post['ISBN']),
@@ -189,6 +195,28 @@
             {
                 return $data;
             }
+        }
+
+        public function amountindex($id)
+        {
+            $this->prepare('SELECT idBook_amount, book_idBook, Book_status,Book_name FROM book_amount left join Book on book_idBook = idBook WHERE book_idBook = '.$id);
+            $result = $this->fetchall();
+            return $result;
+        }
+
+        public function addamount($id)
+        {
+            $data = array(array("book_idBook",$id));
+            $this->insert("book_amount", $data);
+
+            return $this->amountindex($id);
+        }
+
+        public function deleteamount($id,$book)
+        {
+            $this->destroy($id, 'book_amount', 'idBook_amount');
+
+            return $this->amountindex($book);
         }
 
     }

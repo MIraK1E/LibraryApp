@@ -39,16 +39,12 @@
                     </div>
                     <div class="col-12 col-sm-8">
                         <h3 id="Book_name"></h3>
-                        <h5 id="ISBN">ISBN : 9788700631625</h5>
-                        <h6 id="Published_date">Published date : 20/02/2537</h6>
+                        <h5 id="ISBN"></h5>
+                        <h6 id="Published_date"></h6>
                         <h6 id="book_pages"></h6>
                         <h5 id="Category"></h5>
-                        <h6 class="mt-3">Description</h6>
+                        <h6 class="mt-3"></h6>
                         <p id="Book_description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                         </p>
                     </div>
                 </div>
