@@ -41,6 +41,9 @@
                             <a class="nav-link" href="<?= ROOT_URL ?>borrow"><i class="fa fa-exchange fa-fw"></i> Borrow</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="<?= ROOT_URL ?>returnbook"><i class="fa fa-reply fa-fw"></i> Return</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="<?= ROOT_URL ?>borrowhistory"><i class="fa fa-list fa-fw"></i>History</a>
                         </li>
                         <li class="nav-item">
