@@ -6,7 +6,7 @@
                 <button type="button" id="add" data-toggle="modal" data-target="#member_form_modal" class="btn btn-outline-info mt-2"><b><i class="fa fa-plus fa-fw"></i> Add Member</b></button>
             </div>
         </div>
-        <table class="table table-bordered dt-responsive nowrap text-center" id="member_table" cellspacing="0" width="100%">
+        <table class="table table-bordered dt-responsive text-center" id="member_table" cellspacing="0" width="100%">
             <thead class="thead-light">
                 <tr>
                     <th>#</th>
@@ -14,7 +14,7 @@
                     <th>Member Tel.</th>
                     <th>Member Email</th>
                     <th width="50px;">Status</th>
-                    <th width="70px;">Action</th>
+                    <th width="100px;">Action</th>
                 </tr>
             </thead>
             <tbody>
