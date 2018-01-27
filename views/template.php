@@ -44,7 +44,7 @@
                             <a class="nav-link" href="<?= ROOT_URL ?>returnbook"><i class="fa fa-reply fa-fw"></i> Return</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= ROOT_URL ?>borrowhistory"><i class="fa fa-list fa-fw"></i>History</a>
+                            <a class="nav-link" href="<?= ROOT_URL ?>history"><i class="fa fa-list fa-fw"></i>History</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= ROOT_URL ?>member"><i class="fa fa-users fa-fw"></i> Members</a>
