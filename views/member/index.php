@@ -80,32 +80,24 @@
                 <div class="row">
                     <div class="col-12 col-sm-4">
                         <img style="width:100%;"src="<?= ROOT_URL?>assets/images/img_avatar.png">
-                        <a class="btn btn-outline-info btn-block mt-2" href="#" target="blank" role="button" width="100%"><i class="fa fa-external-link fa-fw"></i> View History </a>
+                        <a class="btn btn-outline-info btn-block mt-2 full-history" target="blank" role="button" width="100%"><i class="fa fa-external-link fa-fw"></i> View History </a>
                     </div>
                     <div class="col-12 col-sm-8">
-                        <h3 id="view_Mem_name"><i class="fa fa-address-card fa-fw"></i></h3>
-                        <h5 id="view_Mem_email"><i class="fa fa-envelope fa-fw"></i></h5>
-                        <h5 id="view_Mem_tel"><i class="fa fa-phone fa-fw"></i></h5>
-                        <h6 class="mt-3"><i class="fa fa-exchange fa-fw"></i></h6>
+                        <h3 id="view_Mem_name"></h3>
+                        <h5 id="view_Mem_email"></h5>
+                        <h5 id="view_Mem_tel"></h5>
+                        <h5 id="Fine"><i class="fa fa-credit-card fa-fw"></i> Fine : 150</h5>
+                        <button class="btn badge badge-danger" id="clear">Clear Fine</button>
+                        <h6 class="mt-3"><i class="fa fa-exchange fa-fw"></i> Lasted Borrow</h6>
                         <table class="table table-bordered text-center">
                             <thead>
                                 <tr>
                                     <td>#</td>
                                     <td>Date</td>
-                                    <td>Action</td>
+                                    <td>Amount</td>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20/02/1994</td>
-                                    <td><a class="btn btn-outline-info btn-block" href="#" target="blank" role="button"><i class="fa fa-eye fa-fw"></i> View</a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>21/02/1994</td>
-                                    <td><a class="btn btn-outline-info btn-block" href="#" target="blank" role="button"><i class="fa fa-eye fa-fw"></i> View</a></td>
-                                </tr>
+                            <tbody id="history_table">
                             </tbody>
                         </table>
                     </div>

@@ -33,8 +33,13 @@
 
         public function getmemberdata($id)
         {
-            $data = $this->getbyId('member',$id,'idMember');
-            echo json_encode($data);
+
+                $data['member'] = $this->getbyId('member',$id,'idMember');
+                $data['historytable'] = $this->getlastedborrow($id);
+                $data['fine'] = $this->countfine($id);
+
+                echo json_encode($data);
+
         }
 
         public function edit($id)
@@ -74,6 +79,75 @@
 
             $this->update('member', $data_array, 'idMember', $id);
         }
+
+        public function fullhistory($id)
+        {
+            if(is_numeric($id))
+            {
+                $this->prepare('SELECT idLoan,Loan_date FROM loan LEFT JOIN member ON member_idMember = idMember WHERE idMember ='.$id);
+                $result = $this->fetchAll();
+                $modelhistory = new HistoryModel;
+                foreach($result as $data)
+                {
+                    $dataresult["data"][] = array(
+                        $data['idLoan'],
+                        $data['Loan_date'],
+                        $modelhistory->databook('count', $data['idLoan']),
+                        "<button class='btn btn-mute' id='view' value='".$data['idLoan']."'><i class='fa fa-eye'></i></button>"
+                    );
+                }
+                if(!empty($dataresult))
+                {
+                    echo json_encode($dataresult);
+                }
+                else
+                {
+                    echo json_encode(array("data"=>array(array("nodata","nodata","nodata","nodata"))));
+                }
+            }
+        }
+
+        private function getlastedborrow($id)
+        {
+            $this->prepare('SELECT idLoan,Loan_date FROM loan WHERE member_idMember ='.$id.' ORDER BY idLoan DESC LIMIT 1');
+            $result = $this->fetch();
+            $historymodel = new HistoryModel;
+            $book = $historymodel->databook('count', $result['idLoan']);
+
+            $dataresult['idLoan'] = $result['idLoan'];
+            $dataresult['Loan_date'] = $result['Loan_date'];
+            $dataresult['book'] = $book;
+            return $dataresult;
+        }
+
+        private function countfine($id)
+        {
+            $this->prepare('SELECT idLoan FROM loan WHERE member_idMember ='.$id);
+            $result = $this->fetchAll();
+            $amount = 0;
+            foreach($result as $round)
+            {
+                $this->prepare('SELECT Fine From loan_detail where loan_idLoan ='.$round['idLoan'].' AND Fine_status = 2');
+                $fine = $this->fetch();
+                $amount += $fine['Fine'];
+            }
+            return $amount;
+        }
+
+        public function clearfine($id)
+        {
+            $this->prepare('SELECT idLoan FROM loan WHERE member_idMember ='.$id);
+            $result = $this->fetchAll();
+            foreach($result as $idLoan)
+            {
+                $data = array(array('Fine_status', 1));
+                $this->update('loan_detail', $data, 'loan_idLoan', $idLoan['idLoan']);
+            }
+
+            return $this->countfine($id);
+
+        }
+
     }
 
 ?>

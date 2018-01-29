@@ -4,7 +4,7 @@ function member_table()
     {
         responsive: true,
         ajax: {url:'member/index',type: "POST",data:({getdata:true})},
-        language: { search: ""}
+        language: { search: "",emptyTable: "No data available in table"}
     });
 
     $('<label>Show:' +
@@ -78,10 +78,28 @@ function view_member()
         },
         function(response)
         {
+            console.log(response);
             var data = $.parseJSON(response);
-            $("#view_Mem_name").html(data.Mem_name);
-            $("#view_Mem_email").html(data.Mem_email);
-            $("#view_Mem_tel").html(data.Mem_tel);
+            $("#clear").val(data.member.idMember);
+            $(".full-history").attr("href", window.location.href+'/viewhistory/'+data.member.idMember);
+            $("#view_Mem_name").html('<i class="fa fa-address-card fa-fw"></i> '+data.member.Mem_name);
+            $("#view_Mem_email").html('<i class="fa fa-envelope fa-fw"></i> '+data.member.Mem_email);
+            $("#view_Mem_tel").html('<i class="fa fa-phone fa-fw"></i> '+data.member.Mem_tel);
+            $("#Fine").html('<i class="fa fa-credit-card fa-fw"></i> Fine : '+data.fine);
+
+            if(data.historytable.idLoan != null)
+            {
+                $("#history_table")
+                .html("<tr>"+
+                        "<td>"+data.historytable.idLoan+"</td>"+
+                        "<td>"+data.historytable.Loan_date+"</td>"+
+                        "<td>"+data.historytable.book+"</td>"+
+                     "</tr>");
+            }
+            else
+            {
+                $("#history_table").html("<tr><td colspan='3'>no data</td></tr>")
+            }
         });
     });
 
@@ -147,6 +165,21 @@ function update_member_status()
     });
 }
 
+function clearfine()
+{
+    $(document).on("click","#clear",function(){
+        $.post('member/index',
+            {
+                clearfine : true,
+                idMember : $(this).val()
+            },
+            function(response)
+            {
+                $("#Fine").html('<i class="fa fa-credit-card fa-fw"></i> Fine : '+response);
+            });
+    });
+}
+
 $(document).ready(function()
 {
     member_table();
@@ -159,4 +192,5 @@ $(document).ready(function()
     search();
     mask_input();
     update_member_status();
+    clearfine();
 });
