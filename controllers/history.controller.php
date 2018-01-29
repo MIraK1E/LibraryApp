@@ -9,6 +9,11 @@
                 $model = new HistoryModel;
                 $model->getdata();
             }
+            else if(isset($_POST['idLoan']))
+            {
+                $model = new HistoryModel;
+                $model->getborrowdata($_POST['idLoan']);
+            }
             else
             {
                 $viewmodel = new HistoryModel;
