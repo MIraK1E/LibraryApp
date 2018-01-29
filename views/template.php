@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="<?= ROOT_PATH ?>assets/datatables/responsive.bootstrap4.min.css">
         <link rel="stylesheet" href="<?= ROOT_PATH ?>assets/select2/css/select2.min.css">
         <link rel="stylesheet" href="<?= ROOT_PATH ?>assets/pace/pace-theme-minimal.css">
+        <link rel="stylesheet" href="<?= ROOT_PATH ?>assets/morris.js/morris.css">
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/popper.js/popper.min.js"></script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/bootstrap/js/bootstrap.min.js"></script>
@@ -19,6 +20,8 @@
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/datatables/responsive.bootstrap4.min.js"></script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>assets/mask-input/jquery.mask.min.js"></script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>/assets/select2/js/select2.full.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script type="text/javascript" src="<?= ROOT_PATH ?>/assets/morris.js/morris.min.js"></script>
         <script type="text/javascript">window.paceOptions = {target: '.loader'}</script>
         <script type="text/javascript" src="<?= ROOT_PATH ?>/assets/pace/pace.min.js"></script>
         <?php
@@ -37,6 +40,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarlist">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= ROOT_URL ?>dashboard"><i class="fa fa-tachometer fa-fw"></i> Dashboard</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= ROOT_URL ?>borrow"><i class="fa fa-exchange fa-fw"></i> Borrow</a>
                         </li>

@@ -15,6 +15,7 @@
     require('controllers/borrow.controller.php');
     require('controllers/returnbook.controller.php');
     require('controllers/history.controller.php');
+    require('controllers/dashboard.controller.php');
 
     require('models/books.model.php');
     require('models/home.model.php');
@@ -24,6 +25,7 @@
     require('models/borrow.model.php');
     require('models/returnbook.model.php');
     require('models/history.model.php');
+    require('models/dashboard.model.php');
 
     $route = new Route($_GET);
     $controller = $route->createController();
