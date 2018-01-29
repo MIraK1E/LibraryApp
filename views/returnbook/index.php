@@ -1,4 +1,3 @@
-<?php date_default_timezone_set("Asia/Bangkok"); ?>
 <div class="card mt-5 mb-5">
     <div class="card-header">
         <h4><i class="fa fa-reply fa-fw"></i> Retrun</h4>

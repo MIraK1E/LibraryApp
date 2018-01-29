@@ -14,7 +14,7 @@
                             JOIN book on idBook = book_idBook
                             JOIN loan_detail on Book_amount_idBook_amount = idBook_amount
                             JOIN loan on idLoan = loan_idLoan
-                            WHERE Book_status = 0');
+                            WHERE Book_status = 0 and Return_date is null');
             $result = $this->fetchAll();
             $option = '<option value ="default">-- Book Code --</option>';
             foreach($result as $data)
