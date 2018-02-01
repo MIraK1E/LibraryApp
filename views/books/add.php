@@ -1,8 +1,8 @@
 <div class="card  mt-5">
     <div class="card-body">
-        <form class="form-row" action="<?php $_SERVER['PHP_SELF']; ?>" method="post" id="add_book">
+        <form class="form-row" action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="add_book" enctype="multipart/form-data">
             <div class="col-12 col-lg-4">
-                <input type="file" id="file2">
+                <input type="file" id="file2" name="Book_cover">
             </div>
             <div class="col-12 col-lg-8">
                 <div class="form-group">

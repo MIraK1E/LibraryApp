@@ -33,13 +33,18 @@
 
         public function getmemberdata($id)
         {
+            $data = $this->getbyId('member', $id, 'idMember');
 
-                $data['member'] = $this->getbyId('member',$id,'idMember');
-                $data['historytable'] = $this->getlastedborrow($id);
-                $data['fine'] = $this->countfine($id);
+            echo json_encode($data);
+        }
 
-                echo json_encode($data);
+        public function viewmemberdata($id)
+        {
+            $data['member'] = $this->getbyId('member',$id,'idMember');
+            $data['historytable'] = $this->getlastedborrow($id);
+            $data['fine'] = $this->countfine($id);
 
+            echo json_encode($data);
         }
 
         public function edit($id)

@@ -4,20 +4,27 @@
     {
         protected function index()
         {
-            if(isset($_POST['getdata']))
+            if(isset($_SESSION['is_login']))
             {
-                $model = new HistoryModel;
-                $model->getdata();
-            }
-            else if(isset($_POST['idLoan']))
-            {
-                $model = new HistoryModel;
-                $model->getborrowdata($_POST['idLoan']);
+                if(isset($_POST['getdata']))
+                {
+                    $model = new HistoryModel;
+                    $model->getdata();
+                }
+                else if(isset($_POST['idLoan']))
+                {
+                    $model = new HistoryModel;
+                    $model->getborrowdata($_POST['idLoan']);
+                }
+                else
+                {
+                    $viewmodel = new HistoryModel;
+                    $this->renderView(false,true,$this->getClass());
+                }
             }
             else
             {
-                $viewmodel = new HistoryModel;
-                $this->renderView(false,true,$this->getClass());
+                header('Location:'.ROOT_URL);
             }
         }
     }

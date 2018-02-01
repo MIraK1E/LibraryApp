@@ -5,7 +5,14 @@
 
         protected function index()
         {
-            return;
+            if(isset($_SESSION['is_login']))
+            {
+                return;
+            }
+            else
+            {
+                header('Location:'.ROOT_URL);
+            }
         }
 
     }

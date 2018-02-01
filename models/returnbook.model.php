@@ -58,6 +58,7 @@
 
             if($this->checkDuplicate($post['book_code']))
             {
+                $book_code ='';
                 if($post['submit'] == 'pay')
                 {
                     $status = 1;
@@ -76,7 +77,7 @@
                     {
                         $pay_status = $status;
                     }
-
+                    $book_code.= '#'.$post['book_code'][$i].' ';
                     $data = array(
                         array('Return_date',$now),
                         array('Fine',$post['fine'][$i]),
@@ -86,10 +87,11 @@
                     $this->prepare('UPDATE book_amount SET Book_status = 1 WHERE idBook_amount = '.$post['book_code'][$i]);
                     $this->execute();
                 }
+                Messages::setMsg("$book_code has been return", 'SUCCESS');
             }
             else
             {
-                echo 'don\'t try';
+                Messages::setMsg('Duplicate on Book Code please remake', 'ERROR');
             }
 
         }

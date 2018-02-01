@@ -1,11 +1,11 @@
 <?php date_default_timezone_set("Asia/Bangkok"); ?>
-<div class="card mt-5 mb-5">
+<div class="card  mt-5 mb-5">
     <div class="card-header">
         <h4><i class="fa fa-exchange fa-fw"></i> Borrow</h4>
-        <h6>Librarian : -</h6>
+        <h6>Librarian : <?= $_SESSION['librarian']['name'] ?></h6>
     </div>
     <div class="card-body">
-        <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+        <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
         <div class="row">
             <div class="col-lg-8 col-12">
                 <h5 id="idMember">Member ID : -</h5>

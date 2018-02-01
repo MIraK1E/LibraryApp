@@ -111,12 +111,12 @@
                 }
                 else
                 {
-                    echo "$sql didn't work";
+                    return false;
                 }
             }
             else
             {
-                echo "$sql didn't work";
+                return false;
             }
         }
 
@@ -162,12 +162,12 @@
                 }
                 else
                 {
-                    echo "$sql didn't work";
+                    return false;
                 }
             }
             else
             {
-                echo "$sql didn't work";
+                return false;
             }
         }
 

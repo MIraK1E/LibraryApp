@@ -20,7 +20,7 @@
         {
             $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-            if($_POST)
+            if($post)
             {
                 $data_array = array(
                     array("Lib_name",$post['Lib_name']),
@@ -44,7 +44,7 @@
         {
             $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-            if($_POST)
+            if($post)
             {
                 $data_array = array(
                     array("Lib_name",$post['Lib_name']),

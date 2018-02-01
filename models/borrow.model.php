@@ -44,11 +44,15 @@
         {
             $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-            print_r($post);
+            if($post['member'] =='' || empty($post['book_code']))
+            {
+                Messages::setMsg('Please fill all form', 'ERROR');
+                return;
+            }
 
             $data_array = array(
                 array('Loan_date',$post['date']),
-                array('librarian_idLibrarian',1),
+                array('librarian_idLibrarian',$_SESSION['librarian']['id']),
                 array('member_idMember',$post['member'])
             );
             $this->insert("loan",$data_array);
@@ -66,14 +70,9 @@
                     $this->execute();
 
                 }
-                echo '555';
             }
-            else
-            {
-                echo 'fuck';
-            }
+            Messages::setMsg("Borrow #$idLoan has been added", 'SUCCESS');
+            return;
         }
-
     }
-
 ?>

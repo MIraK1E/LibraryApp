@@ -1,7 +1,7 @@
 <div class="card mt-5 mb-5">
     <div class="card-header">
         <h4><i class="fa fa-reply fa-fw"></i> Retrun</h4>
-        <h6>Librarian : -</h6>
+        <h6>Librarian : <?= $_SESSION['librarian']['name'] ?></h6>
     </div>
     <div class="card-body">
         <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">

@@ -40,6 +40,14 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarlist">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                        <?php
+                            if(isset($_SESSION['is_login']))
+                            {
+                                $auth = new AuthenticateModel;
+                                if($auth->checkAuth($_SESSION['librarian']['id'], $_SESSION['librarian']['name']))
+                                {
+
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= ROOT_URL ?>dashboard"><i class="fa fa-tachometer fa-fw"></i> Dashboard</a>
                         </li>
@@ -72,13 +80,23 @@
                             <a href="<?= ROOT_URL ?>category" class="nav-link"><i class="fa fa-cubes fa-fw"></i> Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="fa fa-sign-in fa-fw"></i> Login</a>
+                            <a href="<?= ROOT_URL ?>authenticate/logout" class="nav-link"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
+                        <?php }
+                        }
+                        else
+                        {
+                        ?>
+                        <li class="nav-item">
+                            <a href="<?= ROOT_URL ?>authenticate" class="nav-link"><i class="fa fa-sign-in fa-fw"></i> Login</a>
+                        </li>
+                    <?php } ?>
                     </ul>
                 </div>
           </nav>
             <div class="loader"></div>
             <div class="container" id="partail_view">
+                <?php Messages::display(); ?>
                 <?php require($view); ?>
             </div>
         </div>

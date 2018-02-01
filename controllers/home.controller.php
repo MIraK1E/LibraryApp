@@ -4,8 +4,16 @@
     {
         protected function index()
         {
-            $viewmodel = new HomeModel();
-            $this->renderView($viewmodel->index(),true);
+            if(isset($_POST['search']))
+            {
+                $model = new HomeModel;
+                $model->search();
+            }
+            else
+            {
+                $viewmodel = new HomeModel();
+                $this->renderView(false,true,$this->getClass());
+            }
         }
     }
 

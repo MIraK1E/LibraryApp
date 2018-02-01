@@ -1,6 +1,6 @@
 <div class="card  mt-5">
     <div class="card-body">
-        <form class="form-row" action="<?php $_SERVER['PHP_SELF']; ?>" method="post" id="add_book">
+        <form class="form-row" action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="add_book">
             <div class="col-12 col-lg-4">
                 <input type="file" id="file2">
             </div>

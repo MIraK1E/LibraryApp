@@ -4,14 +4,21 @@
     {
         protected function index()
         {
-            if(isset($_POST['dashboard']))
+            if(isset($_SESSION['is_login']))
             {
-                $model = new DashboardModel;
-                $model->dashboard();
+                if(isset($_POST['dashboard']))
+                {
+                    $model = new DashboardModel;
+                    $model->dashboard();
+                }
+                else
+                {
+                    $this->renderView(false,true,$this->getClass());
+                }
             }
             else
             {
-                $this->renderView(false,true,$this->getClass());
+                header('Location:'.ROOT_URL);
             }
         }
     }

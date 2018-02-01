@@ -1,8 +1,11 @@
 <?php
     date_default_timezone_set("Asia/Bangkok");
+    session_start();
 
     require('config.php');
 
+    require('core/upload.php');
+    require('core/messages.php');
     require('core/controller.php');
     require('core/model.php');
     require('core/route.php');
@@ -16,6 +19,7 @@
     require('controllers/returnbook.controller.php');
     require('controllers/history.controller.php');
     require('controllers/dashboard.controller.php');
+    require('controllers/authenticate.controller.php');
 
     require('models/books.model.php');
     require('models/home.model.php');
@@ -26,6 +30,7 @@
     require('models/returnbook.model.php');
     require('models/history.model.php');
     require('models/dashboard.model.php');
+    require('models/authenticate.model.php');
 
     $route = new Route($_GET);
     $controller = $route->createController();

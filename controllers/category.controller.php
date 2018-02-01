@@ -4,38 +4,45 @@
     {
         protected function index()
         {
-            if(isset($_POST['getdata']))
+            if(isset($_SESSION['is_login']))
             {
-                $model = new CategoryModel;
-                $result = $model->getdata();
-            }
-            else if(isset($_POST['getindividualdata']))
-            {
-                $model = new CategoryModel;
-                $result = $model->getcategorydata($_POST['getindividualdata']);
-            }
-            else if(isset($_POST['Category_name']))
-            {
-                if($_POST['idCategory'] == '0')
+                if(isset($_POST['getdata']))
                 {
                     $model = new CategoryModel;
-                    $result = $model->add();
+                    $result = $model->getdata();
+                }
+                else if(isset($_POST['getindividualdata']))
+                {
+                    $model = new CategoryModel;
+                    $result = $model->getcategorydata($_POST['getindividualdata']);
+                }
+                else if(isset($_POST['Category_name']))
+                {
+                    if($_POST['idCategory'] == '0')
+                    {
+                        $model = new CategoryModel;
+                        $result = $model->add();
+                    }
+                    else
+                    {
+                        $model = new CategoryModel;
+                        $result = $model->edit($_POST['idCategory']);
+                    }
+                }
+                else if(isset($_POST['idCategory']))
+                {
+                    $model = new CategoryModel;
+                    $result = $model->delete($_POST['idCategory']);
                 }
                 else
                 {
-                    $model = new CategoryModel;
-                    $result = $model->edit($_POST['idCategory']);
+                    $viewmodel = new CategoryModel;
+                    $this->renderView(false,true,$this->getClass());
                 }
-            }
-            else if(isset($_POST['idCategory']))
-            {
-                $model = new CategoryModel;
-                $result = $model->delete($_POST['idCategory']);
             }
             else
             {
-                $viewmodel = new CategoryModel;
-                $this->renderView(false,true,$this->getClass());
+                header('Location:'.ROOT_URL);
             }
         }
     }

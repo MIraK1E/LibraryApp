@@ -74,7 +74,7 @@ function view_member()
     $(document).on("click","#view",function(){
         $.post('member/index',
         {
-            getindividualdata : $(this).val()
+            getviewdata : $(this).val()
         },
         function(response)
         {
